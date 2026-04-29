@@ -1,0 +1,30 @@
+# SPDX-FileCopyrightText: Copyright (c) 1993-2025 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+output_dir: "./results"
+
+model: "Qwen/Qwen3-8B"
+dataset: "ruler"                                  # see DATASET_REGISTRY in evaluate_registry.py
+data_dir: "4096"                                  # dataset-specific split/shard; null when unused
+
+press_name: "kvzap_mlp"                           # one of: no_press, kvzip, kvzap_mlp, kvzap_mlp_compact, kvzap_mlp_streaming_compact
+compression_ratio: null                           # required for kvzip
+key_channel_compression_ratio: null               # unused in the cleaned project; keep null
+threshold: -5.0                                   # used by kvzap_mlp / kvzap_mlp_compact / kvzap_mlp_streaming_compact
+sliding_window_size: 128                          # recent-token protection window for threshold-based presses
+decode_rebuild_interval: 16                       # only used by kvzap_mlp_streaming_compact
+
+fraction: 1.0                                     # Fraction of dataset to evaluate (0.0 to 1.0), for quick testing
+num: null                                         # Optional hard cap on the number of examples after fraction-based sampling
+max_new_tokens: null                              # Maximum new tokens to generate (null = use dataset default)
+max_context_length: null                          # Maximum context length (null = use model maximum)
+query_aware: false                                # Keep false for the retained project methods
+needle_depth: null                                # Unused in the cleaned project; keep null
+
+device: null  # Device to use (null = auto-detect, "cuda:0", "cpu", etc.)
+fp8: false    # Whether to use FP8 quantization (FineGrainedFP8Config() from transformers)
+
+model_kwargs:
+  attn_implementation: null  
+  dtype: "float16"
+  

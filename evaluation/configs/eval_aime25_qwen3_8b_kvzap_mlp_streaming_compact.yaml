@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: Copyright (c) 1993-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+output_dir: "./results"
+
+model: "Qwen/Qwen3-8B"
+dataset: "aime25"
+data_dir: null
+
+press_name: "kvzap_mlp_streaming_compact"
+compression_ratio: null
+threshold: -5.0
+sliding_window_size: 128
+decode_rebuild_interval: 32
+key_channel_compression_ratio: null
+
+fraction: 1.0
+num: 2
+max_new_tokens: 13000
+max_context_length: null
+query_aware: false
+needle_depth: null
+do_sample: true
+temperature: 0.6
+top_p: 0.95
+top_k: 20
+min_p: 0.0
+
+device: "cuda:0"
+fp8: false
+
+model_kwargs:
+  attn_implementation: null
+  dtype: "float16"

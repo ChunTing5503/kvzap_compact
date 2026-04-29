@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: Copyright (c) 1993-2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+output_dir: "./results"
+
+model: "Qwen/Qwen3-8B"
+dataset: "scbench_kv"
+data_dir: null
+
+press_name: "kvzip"
+compression_ratio: 0.50
+threshold: null
+sliding_window_size: 128
+decode_rebuild_interval: null
+key_channel_compression_ratio: null
+
+fraction: 1.0
+num: 5
+max_new_tokens: null
+max_context_length: null
+query_aware: false
+needle_depth: null
+
+device: "cuda:0"
+fp8: false
+
+model_kwargs:
+  attn_implementation: null
+  dtype: "float16"
